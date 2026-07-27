@@ -1,0 +1,159 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  background: #f5f5f4;
+  color: #1c1c1a;
+  min-height: 100vh;
+}
+
+:root {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f5f5f4;
+  --bg-info: #e6f1fb;
+  --bg-success: #eaf3de;
+  --bg-danger: #fcebeb;
+  --bg-warning: #faeeda;
+  --text-primary: #1c1c1a;
+  --text-secondary: #5f5e5a;
+  --text-tertiary: #888780;
+  --text-info: #0c447c;
+  --text-success: #27500a;
+  --text-danger: #791f1f;
+  --text-warning: #633806;
+  --border: rgba(0,0,0,0.12);
+  --border-md: rgba(0,0,0,0.22);
+  --border-info: #85b7eb;
+  --border-success: #97c459;
+  --border-danger: #f09595;
+  --border-warning: #ef9f27;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+}
+
+@media (prefers-color-scheme: dark) {
+  body { background: #1a1a18; color: #e8e7e3; }
+  :root {
+    --bg-primary: #242422;
+    --bg-secondary: #1a1a18;
+    --bg-info: #042c53;
+    --bg-success: #173404;
+    --bg-danger: #501313;
+    --bg-warning: #412402;
+    --text-primary: #e8e7e3;
+    --text-secondary: #b4b2a9;
+    --text-tertiary: #888780;
+    --text-info: #b5d4f4;
+    --text-success: #c0dd97;
+    --text-danger: #f7c1c1;
+    --text-warning: #fac775;
+    --border: rgba(255,255,255,0.1);
+    --border-md: rgba(255,255,255,0.2);
+  }
+}
+
+input, select, textarea {
+  font-family: inherit;
+  font-size: 13px;
+  padding: 8px 10px;
+  border: 0.5px solid var(--border-md);
+  border-radius: var(--radius-md);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  outline: none;
+  transition: border-color 0.15s;
+}
+input:focus, select:focus, textarea:focus {
+  border-color: var(--border-info);
+  box-shadow: 0 0 0 3px rgba(55,138,221,0.15);
+}
+
+button { font-family: inherit; cursor: pointer; }
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+.spinning { animation: spin 1s linear infinite; }
+
+
+/* ── Responsive helpers ──────────────────────────────────────────────────── */
+:root {
+  --page-padding: 24px;
+  --quote-grid: minmax(0, 1fr) minmax(0, 1fr);
+  --professionals-grid: minmax(0, 340px) minmax(0, 1fr);
+  --summary-items-grid: repeat(auto-fill, minmax(200px, 1fr));
+  --summary-quotes-grid: repeat(auto-fill, minmax(260px, 1fr));
+  --professionals-cards-grid: repeat(auto-fill, minmax(220px, 1fr));
+  --top-nav-width: auto;
+  --top-nav-margin-left: auto;
+  --nav-button-flex: 0 0 auto;
+  --step-min-width: 0;
+  --dropzone-padding: 40px 20px;
+  --card-padding: 20px;
+}
+
+html, body, #root { width: 100%; overflow-x: hidden; }
+button, input, select, textarea { max-width: 100%; }
+select { min-width: 0; }
+
+@media (max-width: 760px) {
+  :root {
+    --page-padding: 14px;
+    --quote-grid: 1fr;
+    --professionals-grid: 1fr;
+    --summary-items-grid: 1fr;
+    --summary-quotes-grid: 1fr;
+    --professionals-cards-grid: 1fr;
+    --top-nav-width: 100%;
+    --top-nav-margin-left: 0;
+    --nav-button-flex: 1 1 0;
+    --step-min-width: 160px;
+    --dropzone-padding: 28px 14px;
+    --card-padding: 14px;
+  }
+
+  .mobile-stack {
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+
+  .mobile-actions {
+    width: 100% !important;
+    justify-content: stretch !important;
+  }
+
+  .mobile-actions > button,
+  .mobile-actions > select {
+    flex: 1 1 auto !important;
+  }
+
+  .step-scroll {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .step-desc { display: none !important; }
+
+  .mobile-quote-row {
+    flex-direction: column !important;
+    gap: 8px !important;
+  }
+
+  .mobile-quote-price {
+    width: 100% !important;
+    justify-content: space-between !important;
+    margin-left: 0 !important;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --page-padding: 10px;
+    --card-padding: 12px;
+  }
+
+  body { font-size: 14px; }
+
+  .hide-xs { display: none !important; }
+}
